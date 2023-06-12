@@ -1,0 +1,16 @@
+.intro{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.left{
+    flex: 40%;
+    background-color: rgb(0, 132, 248);
+}
+.right{
+    flex: 60%;
+    padding: 30px;
+    color: white;
+    background-color: #141515;
+}
+

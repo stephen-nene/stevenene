@@ -54,7 +54,7 @@ const Education = () => {
   return (
     <section className='section' id='education' >
       <div className='container mx-auto'>
-        <div className='flex-col '>
+        <div className='flex flex-col lg:flex-row'>
 
           {/* text */}
           <motion.div
@@ -81,7 +81,7 @@ const Education = () => {
                   <div
                     className='border-b border-white/20 h-[146px]vmb-[38px] mb-4 flex'
                     key={index}>
-                    <div className='max-w-[3000px] '>
+                    <div className='max-w-[476px] '>
                       <div className="top mb-3">
                         <img src={school.logo} alt={school.name} className="logo h-10 w-19" />
 

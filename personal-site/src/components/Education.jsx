@@ -52,20 +52,20 @@ const schools = [
 
 const Education = () => {
   return (
-    <section className='section' id='education' >
-      <div className='container mx-auto'>
-        <div className='flex flex-col lg:flex-row'>
-
-          {/* text */}
-          <motion.div
-            variants={fadeIn("right", 0.3)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.7 }}
-            className='flex-1 lg:bg-services lg:bg-bottom bg-no-repeat mix-blend-lighten mb-12 lg:mb-0' >
-            <h2 className='h2 text-accent mb-5'>Where i got educated</h2>
-            <h3 className='h3 max-w-[450px] mb-15'>Mostly it is self taught but i still value the learning instititutions i attended</h3>
-          </motion.div>
+<section className='section' id='education'>
+  <div className='container mx-auto'>
+    <div className='flex flex-col lg:flex-row'>
+      {/* text */}
+      <motion.div
+        variants={fadeIn("right", 0.3)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.7 }}
+        className='flex-1 lg:bg-services lg:bg-bottom bg-no-repeat mix-blend-lighten mb-1 lg:mb-0'
+      >
+        <h2 className='h2 text-accent mb-1'>Where I got educated</h2>
+        <h3 className='h3 max-w-[450px] mb-1'>Mostly it is self-taught but I still value the learning institutions I attended</h3>
+      </motion.div>
 
           {/* schools */}
           <motion.div

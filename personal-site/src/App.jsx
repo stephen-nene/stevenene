@@ -10,7 +10,7 @@ import Skills from './components/Experience';
 // import Blogs from './components/Blogs';
 import Contact from './components/Contact';
 import Certifications from './components/Certifications';
-import Projects from './components/Projects';
+// import Projects from './components/Projects';
 import Education from './components/Education';
 
 
@@ -26,7 +26,7 @@ function App() {
       <About/>  {/* whoAmI */}
       <Education />
       <Certifications/>
-      <Projects /> {/* projects */}
+      {/* <Projects />  */}
       <Skills /> 
       {/* <Blogs /> */}
       <Contact />

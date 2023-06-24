@@ -55,7 +55,7 @@ const Nav = () => {
           >
             <TbCertificate />
           </Link>
-          <Link
+          {/* <Link
             to="projects"
             title="projects"
             activeClass="active"
@@ -63,7 +63,7 @@ const Nav = () => {
             className="cursor-pointer w-[60px] flex items-center justify-center"
           >
             <FcIdea />
-          </Link>
+          </Link> */}
           <Link
             to="experience"
             title="experience"

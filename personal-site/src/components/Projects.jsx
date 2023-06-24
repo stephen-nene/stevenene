@@ -11,12 +11,12 @@ const Projects = () => {
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row gap-x-10">
 
-          <motion.div 
+          <motion.div
             variants={fadeIn("right", 0.3)}
             initial="hidden"
             whileInView={'show'}
             viewport={{ once: false, amount: 0.3 }}
-          className='flex-1 flex flex-col gap-y-11 mb-3 lg:mb-0'>
+            className='flex-1 flex flex-col gap-y-11 mb-3 lg:mb-0'>
             {/* text */}
             <div>
               <h2 className='h2 leading-tight text-accent'>My Latest <br />work</h2>

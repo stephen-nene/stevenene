@@ -1,6 +1,6 @@
 import React from "react";
 
-import Image from "../assets/images/bugatti5.webp";
+import Image from "../assets/images/1.webp";
 
 import { FaGithub, FaLinkedin, FaDiscord, FaTwitter } from "react-icons/fa";
 

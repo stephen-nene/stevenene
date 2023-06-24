@@ -13,4 +13,17 @@
     color: white;
     background-color: #141515;
 }
+.carousel-root {
+    width: 700px;
+    margin: 20px;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .carousel-root {
+      max-width: 400px;
+    }
+  }
 
+  .control-next.control-arrow {
+    border-left: 8px solid #fb1212;
+}

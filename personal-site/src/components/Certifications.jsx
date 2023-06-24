@@ -1,97 +1,110 @@
-import React, { useRef, useState } from 'react';
-import Img1 from '../assets/images/portfolio-img1.png';
+import React from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import "../assets/styles/intro.css"
+
+import THM from '../assets/images/certs/cyber-advent.png';
+import IBM2 from '../assets/images/certs/IBM2.png';
+import IBM1 from '../assets/images/certs/IBM1.png';
+import GITs from '../assets/images/certs/GoogleIT.png';
+import AZURE from '../assets/images/certs/AZURE.png';
+import sysad from '../assets/images/certs/sysad.png';
+import OS from '../assets/images/certs/OS.png';
+import bronze from '../assets/images/certs/bronze.png';
+
+
+
 
 const Certifications = () => {
 
   const certs = [
     {
-      name: 'Microsoft Learn Student Ambassadors',
-      image: 'Microsoft Learn Student Ambassadors logo',
-      provider: 'Microsoft',
-      date: 'Apr 2023',
-      skills: ['Web Services API', 'Artificial Intelligence (AI)', 'Cloud Computing'],
-      credentialId: 'SPKQJ7CE26T4',
-    },
-    {
-      name: 'Build a computer vision app with Azure Cognitive Services',
-      image: 'Coursera logo',
-      provider: 'Coursera',
-      date: 'Mar 2023',
-      skills: ['Web Services API', 'Artificial Intelligence (AI)', 'Cloud Computing'],
-      credentialId: 'SPKQJ7CE26T4',
-    },
-    {
-      name: 'Microsoft Azure AI Fundamentals',
-      image: 'Microsoft learning 365 logo',
-      provider: 'Microsoft learning 365',
-      date: 'Mar 2023',
-      skills: ['Cloud-computing', 'Machine Learning', 'Artificial Intelligence (AI)'],
-      credentialId: '',
-    },
-    {
       name: 'Google IT support',
-      image: 'Google logo',
+      image: GITs,
       provider: 'Google',
       date: 'Jun 2022',
       skills: [],
       credentialId: 'Z8Q7Z8Z2BCGD',
     },
     {
-      name: 'Technical Support Fundamentals',
-      image: 'Coursera logo',
-      provider: 'Coursera',
+      name: 'System administartion ',
+      image: sysad,
+      provider: 'Coursera x Google',
+      date: 'Mar 2023',
+      skills: ['Servers ,', 'networking ,', 'Cloud Computing ,', 'disaster management '],
+      credentialId: 'SPKQJ7CE26T4',
+    },
+
+
+    {
+      name: 'Microsoft Azure AI Fundamentals',
+      image: AZURE,
+      provider: 'Microsoft learning 365',
+      date: 'Mar 2023',
+      skills: ['Cloud-computing', 'Machine Learning', 'Artificial Intelligence (AI)'],
+      credentialId: '',
+    },
+
+    {
+      name: 'Operating System Power User',
+      image: OS,
+      provider: 'Coursera x Google',
       date: 'May 2022',
-      skills: [],
+      skills: ["terminal ,",'system-config ,','logging ,','system-managemnet'],
       credentialId: 'GK56WWCE9JTK',
     },
     {
       name: 'Quantum computing',
-      image: 'IBM logo',
-      provider: 'IBM',
+      image: IBM1 ,
+      provider: 'IBM x QubitxQubit',
       date: 'Mar 2022',
-      skills: ['qubit', 'Python (Programming Language)', 'Quantum Computing'],
+      skills: ['qubit ,', 'Python ,', 'Quantum Computing ,'],
       credentialId: '',
     },
     {
-      name: 'TryHackMe Cyber Advent of Christmas',
-      image: 'TryHackMe logo',
+      name: 'Quantum computing',
+      image: IBM2 ,
+      provider: 'IBM x QubitxQubit',
+      date: 'Mar 2022',
+      skills: ['qubit ,', 'Python ,', 'Quantum Computing ,'],
+      credentialId: '',
+    },
+    {
+      name: 'TryHackMe Cyber Advent',
+      image: THM,
       provider: 'TryHackMe',
       date: 'Dec 2022',
-      skills: ['Cybersecurity', 'Penetration Testing', 'Network Security'],
+      skills: ['Cybersecurity ,', 'Penetration Testing ,', 'Network Security'],
       credentialId: 'CHRISTMAN-CYBER-VENET',
     },
   ];
-  
+
 
   return (
-    <div className="section" id="certifications">
-      <div>
-        <h2 className="h2 leading-tight text-accent">Certifications</h2>
-        <div className="flex flex-col carousel-container">
-          <div className="carousel">
-            {certs.map((cert, index) => {
-              return (
-                <div key={index} className="card">
-                  <div className='group relative overflow-hidden border-2 border-white/50 rounded-xl'>
-                    {/* overlay */}
-                    <div className='group-hover:bg-black/50 w-full h-full absolute z-40 transition-none duration-300 '></div>
-                    {/* img */}
-                    <p>cert {index +1}</p>
-                    {/* <img className='group-hover:scale-125 transition-all duration-500' src={Img1} alt="" /> */}
-                    <div className='absolute -bottom-full left-12 group-hover:bottom-24 transition-all duration-500 z-50'>
-                      <span className='text-gradient'>UI/UX Design</span>
-                    </div>
-                    <div className='absolute -bottom-full left-12 group-hover:bottom-14 transition-all duration-700 z-50'>
-                      <span className='text-2xl text-white'>Project Title</span>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+    <>
+    <section className="section " id="certifications">
+      {/* <h2 className="h2 leading-tight text-accent w-full">Certifications</h2> */}
+      <div className="container flex justify-center items-center">
+
+        <Carousel>
+          {certs.map((cert, index) => (
+            <div key={index} className="card">
+              <img src={cert.image} alt={cert.name} className="card-img-top" />
+              <div className="card-body">
+              <h3 className="text-xl font-bold mb-2">{cert.name}</h3>
+              <p className="">Provider: {cert.provider}</p>
+              <p className="">Date: {cert.date}</p>
+              <p className="">Skills: {cert.skills}</p>
+              <p className="">Credential ID: {cert.credentialId}</p>
+              </div>
+            </div>
+          ))}
+        </Carousel>
+        
       </div>
-    </div>
+    </section>
+    </>
+
   );
 };
 

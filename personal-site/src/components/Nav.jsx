@@ -47,15 +47,6 @@ const Nav = () => {
             <FcGraduationCap />
           </Link>
           <Link
-            to="projects"
-            title="projects"
-            activeClass="active"
-            spy={true}
-            className="cursor-pointer w-[60px] flex items-center justify-center"
-          >
-            <FcIdea />
-          </Link>
-          <Link
             to="certifications"
             title="certifications"
             activeClass="active"
@@ -63,6 +54,15 @@ const Nav = () => {
             className="cursor-pointer w-[60px] flex items-center justify-center"
           >
             <TbCertificate />
+          </Link>
+          <Link
+            to="projects"
+            title="projects"
+            activeClass="active"
+            spy={true}
+            className="cursor-pointer w-[60px] flex items-center justify-center"
+          >
+            <FcIdea />
           </Link>
           <Link
             to="experience"

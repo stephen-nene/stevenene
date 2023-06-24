@@ -25,12 +25,12 @@ function App() {
       <Banner />
       <About/>  {/* whoAmI */}
       <Education />
-      <Projects /> {/* projects */}
       <Certifications/>
-      <Skills /> {/* skills */}
+      <Projects /> {/* projects */}
+      <Skills /> 
       {/* <Blogs /> */}
       <Contact />
-      <div className='h-[4000px]'></div>
+      <div className='h-[150px]'></div>
     </div>
     </>
   )

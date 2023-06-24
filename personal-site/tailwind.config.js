@@ -30,7 +30,7 @@ export default {
       backgroundImage: {
         site: "url('./assets/images/site-bg.jpg')",
         // site: "url('./assets/1.jpg')",
-        about: "url('./assets/images/bugatti3.webp')",
+        about: "url('./assets/images/2.webp')",
         services: "url('./assets/images/services.png')",
       },
     },

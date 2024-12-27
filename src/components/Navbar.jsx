@@ -3,6 +3,22 @@ import { Link as ScrollLink } from "react-scroll";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button, message } from "antd";
 
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Youtube,
+  FileCode2,
+  Codepen,
+  Mail,
+  Chrome,
+  MessageSquare,
+  BookMarked,
+  Instagram,
+  Hash,
+  Coffee,
+} from "lucide-react";
+
 export default function Navbar({ darkMode, setdarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -19,6 +35,20 @@ export default function Navbar({ darkMode, setdarkMode }) {
     { name: "Contact", to: "Contact" },
     { name: "More", to: "More" },
   ];
+    const socials = [
+      { icon: <Github />, href: "#", label: "GitHub" },
+      { icon: <Linkedin />, href: "#", label: "LinkedIn" },
+      { icon: <Twitter />, href: "#", label: "Twitter" },
+      { icon: <FileCode2 />, href: "#", label: "Stack Overflow" },
+      { icon: <Codepen />, href: "#", label: "CodePen" },
+      { icon: <Chrome />, href: "#", label: "Portfolio" },
+      { icon: <Youtube />, href: "#", label: "YouTube" },
+      { icon: <Hash />, href: "#", label: "Discord" },
+      { icon: <BookMarked />, href: "#", label: "Dev.to" },
+      { icon: <Mail />, href: "#", label: "Email" },
+      { icon: <Instagram />, href: "#", label: "Instagram" },
+      { icon: <Coffee />, href: "#", label: "Buy Me a Coffee" },
+    ];
   return (
     <div>
       <div
@@ -88,8 +118,20 @@ export default function Navbar({ darkMode, setdarkMode }) {
         </div>
       </header>
       {/* Theme Toggle */}
-      <div className="fixed dark: bg-fuchsia-500 p-2 top-0 w-full z-50">
-        socials here
+      <div className="fixed dark:bg-fuchsia-500/90 backdrop-blur-sm p-2 top-0 w-full z-50 shadow-lg">
+        <div className="flex items-center justify-center gap-4 flex-wrap max-w-6xl mx-auto px-4">
+          {socials.map(({ icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              title={label}
+              className="text-gray-700 dark:text-white hover:scale-110 hover:text-fuchsia-600 dark:hover:text-fuchsia-300 transition-all duration-200"
+              aria-label={label}
+            >
+              {icon}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

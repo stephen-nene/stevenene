@@ -1,3 +1,35 @@
+import {
+  Home,
+  User,
+  Settings,
+  Briefcase,
+  FileText,
+  Phone,
+  MoreHorizontal,
+} from "lucide-react";
+import {
+  AiOutlineHome,
+  AiOutlineUser,
+  AiOutlineSetting,
+  AiOutlineProject,
+  AiOutlineFileText,
+  AiOutlinePhone,
+  AiOutlineMore,
+} from "react-icons/ai";
+
+
+import {
+  HomeOutlined,
+  UserOutlined,
+  SettingOutlined,
+  ProjectOutlined,
+  FileTextOutlined,
+  PhoneOutlined,
+  MoreOutlined,
+} from "@ant-design/icons";
+
+
+
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Menu, X, Sun, Moon } from "lucide-react";
@@ -7,16 +39,11 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Youtube,
   FileCode2,
-  Codepen,
   Mail,
-  Chrome,
-  MessageSquare,
   BookMarked,
   Instagram,
   Hash,
-  Coffee,
 } from "lucide-react";
 
 export default function Navbar({ darkMode, setdarkMode }) {
@@ -26,46 +53,53 @@ export default function Navbar({ darkMode, setdarkMode }) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const navItems = [
-    { name: "Home", to: "Heros" },
-    { name: "About Me", to: "AboutMe" },
-    { name: "Skills", to: "Skills" },
-    { name: "Projects", to: "Projects" },
-    { name: "Blogs", to: "Blogs" },
-    { name: "Contact", to: "Contact" },
-    { name: "More", to: "More" },
-  ];
+// const navItems = [
+//   { name: "Home", to: "Heros", icon: <AiOutlineHome /> },
+//   { name: "Me", to: "AboutMe", icon: <AiOutlineUser /> },
+//   { name: "Skills", to: "Skills", icon: <AiOutlineSetting /> },
+//   { name: "Projects", to: "Projects", icon: <AiOutlineProject /> },
+//   { name: "Blogs", to: "Blogs", icon: <AiOutlineFileText /> },
+//   { name: "Contact", to: "Contact", icon: <AiOutlinePhone /> },
+//   { name: "More", to: "More", icon: <AiOutlineMore /> },
+// ];
+
+const navItems = [
+  { name: "Home", to: "Heros", icon: <Home /> },
+  { name: "Me", to: "AboutMe", icon: <User /> },
+  { name: "Skills", to: "Skills", icon: <Settings /> },
+  { name: "Projects", to: "Projects", icon: <Briefcase /> },
+  { name: "Blogs", to: "Blogs", icon: <FileText /> },
+  { name: "Contact", to: "Contact", icon: <Phone /> },
+  { name: "More", to: "More", icon: <MoreHorizontal /> },
+];
     const socials = [
       { icon: <Github />, href: "#", label: "GitHub" },
       { icon: <Linkedin />, href: "#", label: "LinkedIn" },
       { icon: <Twitter />, href: "#", label: "Twitter" },
       { icon: <FileCode2 />, href: "#", label: "Stack Overflow" },
-      { icon: <Codepen />, href: "#", label: "CodePen" },
-      { icon: <Chrome />, href: "#", label: "Portfolio" },
-      { icon: <Youtube />, href: "#", label: "YouTube" },
       { icon: <Hash />, href: "#", label: "Discord" },
       { icon: <BookMarked />, href: "#", label: "Dev.to" },
       { icon: <Mail />, href: "#", label: "Email" },
       { icon: <Instagram />, href: "#", label: "Instagram" },
-      { icon: <Coffee />, href: "#", label: "Buy Me a Coffee" },
     ];
+  
   return (
     <div>
       <div
         className={`
       fixed top-1/4 right-4 z-50
       bg-white/10 backdrop-blur-md
-      shadow-2xl transition-all duration-300 ease-in-out
-      dark:bg-slate-800/80 dark:shadow-lg dark:shadow-fuchsia-950
-      rounded-lg p-4 space-y-4 w-auto min-w-[200px]
+      shadow-sm transition-all duration-300 ease-in-out
+      dark:bg-slate-950/70 dark:shadow-lg dark:shadow-fuchsia-950
+      rounded-lg p-4 space-y-4 w-auto min-w -[200px]
       hover:shadow-fuchsia-500 
-      dark:hover:shadow-lg dark:hover:shadow-rose-100 
+      dark:hover:shadow-sm dark:hover:shadow-rose-100 
       ${isMenuOpen ? "block" : "hidden lg:b lock"}
     `}
       >
         <ul className="space-y-3">
           {navItems.map((section) => (
-            <li key={section.to} className="cursor-pointer relative">
+            <li key={section.to} className="flex cursor-pointer relative">
               <ScrollLink
                 onClick={() =>
                   message.info(`Adding ${section.name} section soon`, 4)
@@ -77,19 +111,23 @@ export default function Navbar({ darkMode, setdarkMode }) {
                 offset={-70}
                 activeClass="!text-blue-600 after:scale-x-100"
                 className={`
-                block text-gray-700 dark:text-gray-200
-                font-medium px-3 py-2 rounded-md
-                transition-all duration-300
-                hover:text-blue-600 dark:hover:text-blue-400
-                relative
-                after:absolute after:bottom-0 after:left-0
-                after:w-full after:h-0.5
-                after:bg-blue-600 dark:after:bg-blue-400
-                after:scale-x-0 after:origin-left
-                after:transition-transform after:duration-300
-              `}
+                   text-gray- dark:text-gray-200
+                  font-medium px-1 py-2 rounded-md
+                  transition-all duration-300
+                  hover:text-blue-600 dark:hover:text-blue-400
+                  relative block
+                  after:absolute after:bottom-0 after:left-0
+                  after:w-full after:h-0.5
+                  after:bg-blue-600 dark:after:bg-blue-400
+                  after:scale-x-0 after:origin-left
+                  after:transition-transform after:duration-300
+                  `}
               >
+                <div className="flex gap-3 ">
+
+                {section.icon}
                 {section.name}
+                </div>
               </ScrollLink>
             </li>
           ))}
@@ -99,7 +137,9 @@ export default function Navbar({ darkMode, setdarkMode }) {
       <header className="fixed top-10 w-full shadow-md py-4 px-4 sm:px-10 dark:bg-fuchsia-700 bg-white font-[sans-serif] min-h-[70px] tracking-wide z-50">
         <div className="flex flex-wrap items-center justify-between gap-5 w-full">
           <div className="flex dark:text-white gap-4">
-            <h1 className="md:text-4xl text-xl font-logo2">Stevenene</h1>
+            <h1 className="cursor-pointer md:text-4xl text-3xl hover:text-emerald-600 font-logo2">
+              Stevenene
+            </h1>
           </div>
           <div className="flex max-lg:ml-auto space-x-4">
             <button
@@ -125,7 +165,7 @@ export default function Navbar({ darkMode, setdarkMode }) {
               key={label}
               href={href}
               title={label}
-              className="text-gray-700 dark:text-white hover:scale-110 hover:text-fuchsia-600 dark:hover:text-fuchsia-300 transition-all duration-200"
+              className=" dark:text-white hover:scale-110 hover:text-fuchsia-600 dark:hover:text-emerald-300 transition-all duration-200"
               aria-label={label}
             >
               {icon}

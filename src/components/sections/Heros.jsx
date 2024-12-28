@@ -1,15 +1,36 @@
+import { Cpu,Wrench, DatabaseZap, ExternalLink, Mail } from "lucide-react";
+import {
+  Server,
+  Globe,
+  LayoutPanelTop,
+  Lock,
+  FlaskConical,
+  Leaf,
+  Brain,
+  BrainCircuit,
+  Terminal,
+} from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
-
-import { Cpu, DatabaseZap, ExternalLink, Mail } from "lucide-react";
-import { Server, Globe, Lock, Leaf, Brain, BrainCircuit } from "lucide-react";
-
-import { LayoutPanelTop, Terminal, Wrench, FlaskConical } from "lucide-react";
+// import {
+//   Cpu,
+//   DatabaseZap,
+//   ExternalLink,
+//   Mail,
+//   Server,
+//   Globe,
+//   Lock,
+//   Leaf,
+//   Brain,
+//   BrainCircuit,
+//   LayoutPanelTop,
+//   Terminal,
+//   Wrench,
+//   FlaskConical,
+// } from "lucide-react";
 
 import img from "../../assets/images/1.webp";
-
-
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,11 +40,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="rela tive min-h-screen bg-gra dient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-fuchsia-950 overflow-hidden">
+    <div className="relative min-h-screen bg- gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-fuchsia-950 overflow-hidden">
       {/* Background Grid Animation */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10" />
 
-      <div className="w-full  md:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+      <div className="w-full md:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center justify-center">
           {/* Left Column - Text Content */}
           <motion.div
@@ -38,7 +59,7 @@ export default function Hero() {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <span className="px-4 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
-                Available for Projects, jobs
+                Available for Projects, Jobs
               </span>
             </motion.div>
 
@@ -46,13 +67,14 @@ export default function Hero() {
               <span className="block text-gray-900 dark:text-white">
                 Turning Code
               </span>
-              <span className=" bg-gradient-to-r from-blue-500 to-fuchsia-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-500 to-fuchsia-500 bg-clip-text text-transparent">
                 into Impact 🌟
               </span>
             </h1>
-            <div className="flex f">
+
+            <div className="flex items-center gap-2">
               <Terminal />
-              <p className=" text-lg sm:text-xl text-gr ay-600 dark:text-gray-300 leading -relaxed">
+              <p className="text-lg sm:text-xl text- gray-600 dark:text-gray-300 leading-relaxed">
                 Hello World! I'm Steve Nene, a passionate Full-Stack Engineer
                 who turns complex challenges into elegant solutions. From
                 crafting pixel-perfect frontends to optimizing cloud
@@ -82,22 +104,24 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 pt-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300"
+              <ScrollLink
+                to="work"
+                smooth
+                duration={600}
+                className="cursor-pointer px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <ExternalLink size={20} />
                 View My Work
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 border-2 border-gray-800 dark:border-white text-gray-800 dark:text-white rounded-lg font-medium flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+              </ScrollLink>
+              <ScrollLink
+                to="contact"
+                smooth
+                duration={600}
+                className="cursor-pointer px-6 py-3 border-2 border-gray-800 dark:border-white text-gray-800 dark:text-white rounded-lg font-medium flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
               >
                 <Mail size={20} />
                 Contact Me
-              </motion.button>
+              </ScrollLink>
             </div>
           </motion.div>
 
@@ -134,29 +158,19 @@ export default function Hero() {
   );
 }
 
-
 const generalInterests = [
   { name: "Software Dev", icon: <Cpu className="text-purple-500" /> },
-  { name: "Web Development", icon: <Globe className="text-blue-400" /> },
-  {
-    name: "Frontend Development",
-    icon: <LayoutPanelTop className="text-blue-400" />,
-  },
-  { name: "Backend Engineering", icon: <Server className="text-green-500" /> },
-  { name: "DevOps & Automation", icon: <Wrench className="text-gray-600" /> },
-  { name: "Database Design", icon: <DatabaseZap className="text-green-500" /> },
-
+  { name: "Web Dev", icon: <Globe className="text-blue-400" /> },
+  { name: "Frontend", icon: <LayoutPanelTop className="text-blue-400" /> },
+  { name: "Backend", icon: <Server className="text-green-500" /> },
+  { name: "DevOps", icon: <Wrench className="text-gray-600" /> },
+  { name: "Databases", icon: <DatabaseZap className="text-green-500" /> },
   { name: "Problem Solver", icon: <Brain className="text-purple-600" /> },
-
   {
-    name: "Crazy debugger",
+    name: "Crazy Debugger",
     icon: <FlaskConical className="text-orange-500" />,
-    title: "Experimenting & Breaking Things",
   },
-  { name: "Cybersecurity Enthusiast", icon: <Lock className="text-red-500" /> },
+  { name: "AI & ML", icon: <BrainCircuit className="text-yellow-500" /> },
+  { name: "Cybersec", icon: <Lock className="text-red-500" /> },
   { name: "Nature Enthusiast", icon: <Leaf className="text-green-600" /> },
-  {
-    name: "AI & ML",
-    icon: <BrainCircuit className="text-yellow-500" />,
-  },
 ];

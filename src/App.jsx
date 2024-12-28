@@ -1,7 +1,9 @@
 import { useState } from "react";
-import Portfolio from "./components/Portfolio";
+import Portfolio from "./components/pages/Portfolio";
 import Navbar from "./components/Navbar";
-import Construction from "./components/Construction";
+import Construction from "./components/pages/Construction";
+
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [darkMode, setdarkMode] = useState(true);
@@ -10,11 +12,15 @@ function App() {
     <>
       <div className={`${darkMode ? "dark" : ""} `}>
         <Navbar darkMode={darkMode} setdarkMode={setdarkMode} />
-        {/* <div className="  bg-gradient-to-br from-gray-100 to-gray-200 dark:from-fuchsia-950 dark:to-purple-900 min-h- screen p-6"> */}
 
         <div className="pt-[110px] min-h-screen bg-gradient-to-br from-emerald-500 to-lime-700 dark:from-fuchsia-950 dark:to-purple-950  ">
-          {/* <Portfolio /> */}
-          <Construction />
+          <Routes>
+            <Route exact path="/" element={<Portfolio />} />
+            <Route path="/construction" element={<Construction />} />
+            {/* <Route path="/project/:id" element={<About />} /> */}
+            {/* <Route path="*" element={<NotFound />} /> */}
+          </Routes>
+          {/* <Construction /> */}
         </div>
       </div>
     </>

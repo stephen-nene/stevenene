@@ -87,7 +87,7 @@ const navItems = [
     <div>
       <div
         className={`
-      fixed top-1/4 right-4 z-50
+      fixed top-1/3 right-4 z-50
       bg-white/10 backdrop-blur-md
       shadow-sm transition-all duration-300 ease-in-out
       dark:bg-slate-950/70 dark:shadow-lg dark:shadow-fuchsia-950
@@ -124,14 +124,30 @@ const navItems = [
                   `}
               >
                 <div className="flex gap-3 ">
-
-                {section.icon}
-                {section.name}
+                  {section.icon}
+                  {section.name}
                 </div>
               </ScrollLink>
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* Theme Toggle */}
+      <div className="fixed dark:bg-f uchsia-500/90 backdrop-blur-sm p-2 top-0 w-full z-50 shadow-lg">
+        <div className="flex items-center justify-center gap-4 flex-wrap max-w-6xl mx-auto px-4">
+          {socials.map(({ icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              title={label}
+              className=" dark:text-white hover:scale-110 hover:text-fuchsia-600 dark:hover:text-emerald-300 transition-all duration-200"
+              aria-label={label}
+            >
+              {icon}
+            </a>
+          ))}
+        </div>
       </div>
 
       <header className="fixed top-10 w-full shadow-md py-4 px-4 sm:px-10 dark:bg-fuchsia-700 bg-white font-[sans-serif] min-h-[70px] tracking-wide z-50">
@@ -157,22 +173,8 @@ const navItems = [
           </div>
         </div>
       </header>
-      {/* Theme Toggle */}
-      <div className="fixed dark:bg-fuchsia-500/90 backdrop-blur-sm p-2 top-0 w-full z-50 shadow-lg">
-        <div className="flex items-center justify-center gap-4 flex-wrap max-w-6xl mx-auto px-4">
-          {socials.map(({ icon, href, label }) => (
-            <a
-              key={label}
-              href={href}
-              title={label}
-              className=" dark:text-white hover:scale-110 hover:text-fuchsia-600 dark:hover:text-emerald-300 transition-all duration-200"
-              aria-label={label}
-            >
-              {icon}
-            </a>
-          ))}
-        </div>
-      </div>
+
+      
     </div>
   );
 }

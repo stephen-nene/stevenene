@@ -1,17 +1,17 @@
 import React from "react";
-import Heros from "./Heros";
-import AboutMe from "./AboutMe";
-import Blogs from "./Blogs";
-import More from "./More";
-import Projects from "./Projects";
-import Contact from "./Contact";
-import Skills from "./Skills";
+import Heros from "../sections/Heros";
+import AboutMe from "../sections/AboutMe";
+import Blogs from "../sections/Blogs";
+import More from "../sections/More";
+import Projects from "../sections/Projects";
+import Contact from "../sections/Contact";
+import Skills from "../sections/Skills";
 
 export default function Portfolio() {
   return (
     <div>
       {/* Rainbow background colors with dark mode variants */}
-      <div className="bg-red-500 dark:bg-red-900" id="Heros">
+      <div className="bg-rose-500 dark:bg-red-900" id="Heros">
         <Heros more="x" />
       </div>
       <div className="bg-orange-500 dark:bg-orange-900" id="AboutMe">

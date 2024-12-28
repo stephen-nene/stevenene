@@ -160,7 +160,7 @@ const navItems = [
           <div className="flex max-lg:ml-auto space-x-4">
             <button
               onClick={() => setdarkMode(!darkMode)}
-              className="flex gap-2 px-4 py-2 text-sm rounded-full font-bold bg-white border-2 hover:bg-gray-400 transition-all ease-in-out duration-300"
+              className="flex gap-2 px-4 py-2 text-sm rounded-full font-bold bg-fuchsia-300 dark:bg-green-300 border-2 dark:hover:bg-green-500 hover:bg-fuchsia-500 transition-all ease-in-out duration-300"
             >
               {darkMode ? <Sun /> : <Moon />}
             </button>
@@ -173,8 +173,6 @@ const navItems = [
           </div>
         </div>
       </header>
-
-      
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function Portfolio() {
   return (
     <div>
       {/* Rainbow background colors with dark mode variants */}
-      <div className="bg-rose-500 dark:bg-red-900" id="Heros">
+      <div className="bg-rose-600 dark:bg-rose-950" id="Heros">
         <Heros more="x" />
       </div>
       <div className="bg-orange-500 dark:bg-orange-900" id="AboutMe">

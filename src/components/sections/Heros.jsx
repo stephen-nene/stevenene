@@ -1,8 +1,6 @@
 import { Cpu,Wrench, DatabaseZap, ExternalLink, Mail } from "lucide-react";
 import {
-  Server,
   Globe,
-  LayoutPanelTop,
   Lock,
   FlaskConical,
   Leaf,
@@ -13,22 +11,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
-// import {
-//   Cpu,
-//   DatabaseZap,
-//   ExternalLink,
-//   Mail,
-//   Server,
-//   Globe,
-//   Lock,
-//   Leaf,
-//   Brain,
-//   BrainCircuit,
-//   LayoutPanelTop,
-//   Terminal,
-//   Wrench,
-//   FlaskConical,
-// } from "lucide-react";
+
 
 import img from "../../assets/images/1.webp";
 
@@ -42,7 +25,6 @@ export default function Hero() {
   return (
     <div className="relative min-h-screen bg- gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-fuchsia-950 overflow-hidden">
       {/* Background Grid Animation */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10" />
 
       <div className="w-full md:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center justify-center">
@@ -64,8 +46,8 @@ export default function Hero() {
             </motion.div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-              <span className="block text-gray-900 dark:text-white">
-                Steve Nene 🌟 
+              <span className="block font-logo text-gray-900 dark:text-white">
+                Stevenene 🌟
               </span>
               {/* <span className="bg-gradient-to-r from-blue-500 to-fuchsia-500 bg-clip-text text-transparent">
                 Turning Code
@@ -103,16 +85,18 @@ export default function Hero() {
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 pt-4">
               <ScrollLink
-                to="work"
+                to="Projects"
                 smooth
                 duration={600}
+                style={{ cursor: "pointer" }} // Inline style
+                onClick={() => console.log("ScrollLink clicked!")}
                 className="cursor-pointer px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <ExternalLink size={20} />
                 View My Work
               </ScrollLink>
               <ScrollLink
-                to="contact"
+                to="Contact"
                 smooth
                 duration={600}
                 className="cursor-pointer px-6 py-3 border-2 border-gray-800 dark:border-white text-gray-800 dark:text-white rounded-lg font-medium flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
@@ -155,6 +139,7 @@ export default function Hero() {
     </div>
   );
 }
+
 
 const generalInterests = [
   // { name: "Software Dev", icon: <Cpu className="text-purple-500" /> },

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { FloatButton } from "antd";
 import Heros from "../sections/Heros";
 import AboutMe from "../sections/AboutMe";
 import Blogs from "../sections/Blogs";
@@ -6,12 +7,31 @@ import More from "../sections/More";
 import Projects from "../sections/Projects";
 import Contact from "../sections/Contact";
 import Skills from "../sections/Skills";
-
 import { Element } from "react-scroll";
 
+import { FaArrowUp } from "react-icons/fa";
+
+
 export default function Portfolio() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Track the scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div>
+      {/* Sections */}
       <Element name="Heros">
         <div className="bg-rose-600 dark:bg-rose-950">
           <Heros more="x" />
@@ -47,7 +67,16 @@ export default function Portfolio() {
           <More />
         </div>
       </Element>
+
+      {/* Floating Button for Scroll to Top */}
+      {isScrolled && (
+        <FloatButton
+          shape="circle"
+          icon={<FaArrowUp/>}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          style={{ right: 20, bottom: 20 }}
+        />
+      )}
     </div>
   );
 }
-

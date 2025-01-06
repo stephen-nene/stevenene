@@ -7,7 +7,7 @@ import {
   Phone,
   MoreHorizontal,
 } from "lucide-react";
-import { SiDailydotdev } from "react-icons/si";
+import { SiDailydotdev, SiWhatsapp } from "react-icons/si";
 
 import {
   HomeOutlined,
@@ -74,7 +74,12 @@ export default function Navbar({ darkMode, setdarkMode }) {
       label: "daily.dev",
     },
     { icon: <Mail />, href: "mailto:stevekid705@gmail.com", label: "Email" },
-    { icon: <Instagram />, href: "#", label: "Instagram" },
+    // { icon: <Instagram />, href: "#", label: "Instagram" },
+    {
+      icon: <SiWhatsapp size={23} />,
+      href: "https://wa.me/254741780970",
+      label: "Whatsapp",
+    },
   ];
 
   return (

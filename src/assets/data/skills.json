@@ -1,0 +1,116 @@
+{
+    "skills": {
+        "Frontend": {
+            "Technologies": [
+                "React",
+                "HTML",
+                "CSS",
+                "Tailwind CSS",
+                "JavaScript"
+            ],
+            "Concepts": [
+                "Responsive Design",
+                "Accessibility (A11y)",
+                "Component-Based Architecture"
+            ],
+            "Libraries": [
+                "React Router",
+                "Redux",
+                "Axios"
+            ]
+        },
+        "Backend": {
+            "Technologies": [
+                "Node.js",
+                "Flask",
+                "Django",
+                "Ruby on Rails"
+            ],
+            "Concepts": [
+                "REST API Design",
+                "MVC Architecture",
+                "Authentication & Authorization"
+            ],
+            "Libraries": [
+                "Express",
+                "Gunicorn",
+                "Webpack"
+            ],
+            "Cloud Services": [
+                "AWS S3",
+                "Heroku",
+                "Netlify"
+            ]
+        },
+        "Languages": {
+            "Programming": [
+                "JavaScript",
+                "Python",
+                "Ruby",
+                "Rust"
+            ],
+            "Markup": [
+                "HTML",
+                "Markdown"
+            ],
+            "Stylesheet": [
+                "CSS",
+                "SASS"
+            ]
+        },
+        "Databases": {
+            "SQL": [
+                "PostgreSQL",
+                "SQLite"
+            ],
+            "NoSQL": [
+                "MongoDB"
+            ]
+        },
+        "Tools": {
+            "Version Control": [
+                "Git",
+                "GitHub",
+                "GitFlow"
+            ],
+            "IDEs/Editors": [
+                "VS Code",
+                "Codium"
+            ],
+            "Package Managers": [
+                "pnpm",
+                "npm",
+                "yarn"
+            ],
+            "Other Tools": [
+                "Trello",
+                "Postman",
+                "DataDog",
+                "Google Analytics"
+            ]
+        },
+        "Other Skills": {
+            "DevOps": [
+                "Docker",
+                "CI/CD Pipelines"
+            ],
+            "Testing": [
+                "Jest",
+                "Enzyme"
+            ],
+            "Project Management": [
+                "Agile Methodologies",
+                "Task Prioritization"
+            ],
+            "AI & Machine Learning": [
+                "Image Recognition",
+                "Text Extraction"
+            ],
+            "Soft Skills": [
+                "Remote Collaboration",
+                "Client Communication",
+                "Problem-Solving"
+            ]
+        }
+    }
+}

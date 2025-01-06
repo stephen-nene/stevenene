@@ -7,16 +7,7 @@ import {
   Phone,
   MoreHorizontal,
 } from "lucide-react";
-import {
-  AiOutlineHome,
-  AiOutlineUser,
-  AiOutlineSetting,
-  AiOutlineProject,
-  AiOutlineFileText,
-  AiOutlinePhone,
-  AiOutlineMore,
-} from "react-icons/ai";
-
+import { SiDailydotdev } from "react-icons/si";
 
 import {
   HomeOutlined,
@@ -28,23 +19,12 @@ import {
   MoreOutlined,
 } from "@ant-design/icons";
 
-
-
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button, message } from "antd";
 
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  FileCode2,
-  Mail,
-  BookMarked,
-  Instagram,
-  Hash,
-} from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Hash, Instagram } from "lucide-react";
 
 export default function Navbar({ darkMode, setdarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -53,36 +33,50 @@ export default function Navbar({ darkMode, setdarkMode }) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-// const navItems = [
-//   { name: "Home", to: "Heros", icon: <AiOutlineHome /> },
-//   { name: "Me", to: "AboutMe", icon: <AiOutlineUser /> },
-//   { name: "Skills", to: "Skills", icon: <AiOutlineSetting /> },
-//   { name: "Projects", to: "Projects", icon: <AiOutlineProject /> },
-//   { name: "Blogs", to: "Blogs", icon: <AiOutlineFileText /> },
-//   { name: "Contact", to: "Contact", icon: <AiOutlinePhone /> },
-//   { name: "More", to: "More", icon: <AiOutlineMore /> },
-// ];
+  // const navItems = [
+  //   { name: "Home", to: "Heros", icon: <AiOutlineHome /> },
+  //   { name: "Me", to: "AboutMe", icon: <AiOutlineUser /> },
+  //   { name: "Skills", to: "Skills", icon: <AiOutlineSetting /> },
+  //   { name: "Projects", to: "Projects", icon: <AiOutlineProject /> },
+  //   { name: "Blogs", to: "Blogs", icon: <AiOutlineFileText /> },
+  //   { name: "Contact", to: "Contact", icon: <AiOutlinePhone /> },
+  //   { name: "More", to: "More", icon: <AiOutlineMore /> },
+  // ];
 
-const navItems = [
-  { name: "Home", to: "Heros", icon: <Home /> },
-  { name: "Me", to: "AboutMe", icon: <User /> },
-  { name: "Skills", to: "Skills", icon: <Settings /> },
-  { name: "Projects", to: "Projects", icon: <Briefcase /> },
-  { name: "Blogs", to: "Blogs", icon: <FileText /> },
-  { name: "Contact", to: "Contact", icon: <Phone /> },
-  { name: "More", to: "More", icon: <MoreHorizontal /> },
-];
-    const socials = [
-      { icon: <Github />, href: "#", label: "GitHub" },
-      { icon: <Linkedin />, href: "#", label: "LinkedIn" },
-      { icon: <Twitter />, href: "#", label: "Twitter" },
-      { icon: <FileCode2 />, href: "#", label: "Stack Overflow" },
-      { icon: <Hash />, href: "#", label: "Discord" },
-      { icon: <BookMarked />, href: "#", label: "Dev.to" },
-      { icon: <Mail />, href: "#", label: "Email" },
-      { icon: <Instagram />, href: "#", label: "Instagram" },
-    ];
-  
+  const navItems = [
+    { name: "Home", to: "Heros", icon: <Home /> },
+    { name: "Me", to: "AboutMe", icon: <User /> },
+    { name: "Skills", to: "Skills", icon: <Settings /> },
+    { name: "Projects", to: "Projects", icon: <Briefcase /> },
+    { name: "Blogs", to: "Blogs", icon: <FileText /> },
+    { name: "Contact", to: "Contact", icon: <Phone /> },
+    { name: "More", to: "More", icon: <MoreHorizontal /> },
+  ];
+  const socials = [
+    {
+      icon: <Github />,
+      href: "https://github.com/stephen-nene",
+      label: "GitHub",
+    },
+    {
+      icon: <Linkedin />,
+      href: "https://www.linkedin.com/in/stevenene",
+      label: "LinkedIn",
+    },
+    {
+      icon: <Twitter />,
+      href: "https://x.com/hackerOnBird",
+      label: "Twitter",
+    },
+    {
+      icon: <SiDailydotdev size={25} />,
+      href: "https://app.daily.dev/stevonene",
+      label: "daily.dev",
+    },
+    { icon: <Mail />, href: "mailto:stevekid705@gmail.com", label: "Email" },
+    { icon: <Instagram />, href: "#", label: "Instagram" },
+  ];
+
   return (
     <div>
       <div
@@ -140,6 +134,7 @@ const navItems = [
             <a
               key={label}
               href={href}
+              target="__blank"
               title={label}
               className=" dark:text-white hover:scale-110 hover:text-fuchsia-600 dark:hover:text-emerald-300 transition-all duration-200"
               aria-label={label}

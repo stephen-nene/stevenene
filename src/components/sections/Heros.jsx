@@ -65,22 +65,20 @@ export default function Hero() {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
               <span className="block text-gray-900 dark:text-white">
+                Steve Nene 🌟 
+              </span>
+              {/* <span className="bg-gradient-to-r from-blue-500 to-fuchsia-500 bg-clip-text text-transparent">
                 Turning Code
-              </span>
-              <span className="bg-gradient-to-r from-blue-500 to-fuchsia-500 bg-clip-text text-transparent">
-                into Impact 🌟
-              </span>
+              </span> */}
             </h1>
 
             <div className="flex items-center gap-2">
               <Terminal />
               <p className="text-lg sm:text-xl text- gray-600 dark:text-gray-300 leading-relaxed">
                 Hello World! I'm Steve Nene, a passionate Full-Stack Engineer
-                who turns complex challenges into elegant solutions. From
-                crafting pixel-perfect frontends to optimizing cloud
-                infrastructure, I bring ideas to life through clean, efficient
-                code and innovative architecture. Let's build something
-                extraordinary together! 💻✨
+                who turns complex challenges into elegant solutions.Bringing
+                ideas to life through clean, efficient code and innovative
+                architecture. Let's build something extraordinary together! 💻✨
               </p>
             </div>
 
@@ -159,10 +157,10 @@ export default function Hero() {
 }
 
 const generalInterests = [
-  { name: "Software Dev", icon: <Cpu className="text-purple-500" /> },
-  { name: "Web Dev", icon: <Globe className="text-blue-400" /> },
-  { name: "Frontend", icon: <LayoutPanelTop className="text-blue-400" /> },
-  { name: "Backend", icon: <Server className="text-green-500" /> },
+  // { name: "Software Dev", icon: <Cpu className="text-purple-500" /> },
+  { name: "FullStack", icon: <Globe className="text-blue-400" /> },
+  // { name: "Frontend", icon: <LayoutPanelTop className="text-blue-400" /> },
+  // { name: "Backend", icon: <Server className="text-green-500" /> },
   { name: "DevOps", icon: <Wrench className="text-gray-600" /> },
   { name: "Databases", icon: <DatabaseZap className="text-green-500" /> },
   { name: "Problem Solver", icon: <Brain className="text-purple-600" /> },

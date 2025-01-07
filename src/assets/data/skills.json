@@ -6,14 +6,10 @@
                 "HTML",
                 "CSS",
                 "Tailwind CSS",
-                "JavaScript"
-            ],
-            "Concepts": [
+                "JavaScript",
                 "Responsive Design",
                 "Accessibility (A11y)",
-                "Component-Based Architecture"
-            ],
-            "Libraries": [
+                "Component-Based Architecture",
                 "React Router",
                 "Redux",
                 "Axios"
@@ -24,65 +20,37 @@
                 "Node.js",
                 "Flask",
                 "Django",
-                "Ruby on Rails"
-            ],
-            "Concepts": [
+                "Ruby on Rails",
                 "REST API Design",
                 "MVC Architecture",
-                "Authentication & Authorization"
-            ],
-            "Libraries": [
+                "Authentication & Authorization",
                 "Express",
                 "Gunicorn",
-                "Webpack"
-            ],
-            "Cloud Services": [
+                "Webpack",
                 "AWS S3",
                 "Heroku",
                 "Netlify"
             ]
         },
-        "Languages": {
-            "Programming": [
-                "JavaScript",
-                "Python",
-                "Ruby",
-                "Rust"
-            ],
-            "Markup": [
-                "HTML",
-                "Markdown"
-            ],
-            "Stylesheet": [
-                "CSS",
-                "SASS"
-            ]
-        },
         "Databases": {
             "SQL": [
                 "PostgreSQL",
-                "SQLite"
-            ],
-            "NoSQL": [
-                "MongoDB"
+                "SQLite",
+                "MongoDB",
+                "IndexDB"
             ]
         },
         "Tools": {
             "Version Control": [
                 "Git",
                 "GitHub",
-                "GitFlow"
-            ],
-            "IDEs/Editors": [
+                "GitFlow",
                 "VS Code",
-                "Codium"
-            ],
-            "Package Managers": [
+                "Codium",
+                "Vim",
                 "pnpm",
                 "npm",
-                "yarn"
-            ],
-            "Other Tools": [
+                "yarn",
                 "Trello",
                 "Postman",
                 "DataDog",
@@ -92,21 +60,13 @@
         "Other Skills": {
             "DevOps": [
                 "Docker",
-                "CI/CD Pipelines"
-            ],
-            "Testing": [
+                "CI/CD Pipelines",
                 "Jest",
-                "Enzyme"
-            ],
-            "Project Management": [
+                "Enzyme",
                 "Agile Methodologies",
-                "Task Prioritization"
-            ],
-            "AI & Machine Learning": [
+                "Task Prioritization",
                 "Image Recognition",
-                "Text Extraction"
-            ],
-            "Soft Skills": [
+                "Text Extraction",
                 "Remote Collaboration",
                 "Client Communication",
                 "Problem-Solving"

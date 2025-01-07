@@ -1,74 +1,86 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaLightbulb } from "react-icons/fa";
-import { Code2, Database, Layout, GitBranch, Server } from "lucide-react";
+import { Database } from "lucide-react";
 import about2 from "../../assets/images/about2.webp";
 
 export default function AboutMe() {
   return (
-    <>
-      <div className="w-full p-4 flex justify-between items-center bg-g ray-200 dark:bg-gray-800 shadow-md">
-        <h1 className="text-3xl font-bold">About Me</h1>
-        <FaLightbulb
-          size={28}
-          className="text-yellow-500 dark:text-yellow-300"
-        />
-      </div>
-      <div className="min-h-screen flex flex-col justify-center items-center bg-gray -100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors">
-        {/* Header Section */}
-
-        {/* Main Content */}
+    <div className=" ">
+      <motion.div
+        className="min-h-screen flex flex-col p-4 md: p-8 pt-16 md:pt-20  md:flex-row items-center gap-8 md:gap-12"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+        variants={{
+          hidden: { opacity: 0, y: 50 },
+          visible: { opacity: 1, y: 0 },
+        }}
+      >
+        {/* Text Section */}
         <motion.div
-          className="container mx-auto p-6 flex flex-col md:flex-row gap-8 items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          className="md:w-1/2 space-y-6"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          {/* Text Section */}
-          <div className="md:w-1/2">
-            <p className="text-lg leading-7">
-              Hi, I’m Steve! I have a strong passion for software development
-              and solving real-world challenges. My journey has been defined by
-              impactful projects and hands-on learning:
-            </p>
-            <ul className="mt-4 space-y-2">
-              <li>
-                <Database
-                  name="check-circle"
-                  className="inline-block mr-2 text-blue-500"
-                />
-                Developed a financial tracker app, honing skills in React, data
-                visualization, and state management.
-              </li>
-              <li>
-                {/* <LucideIcon
-                name="check-circle"
-                className="inline-block mr-2 text-blue-500"
-              /> */}
-                Integrated e-commerce functionality into Klinsept’s website,
-                improving backend development with APIs and PostgreSQL.
-              </li>
-              <li>
-                {/* <LucideIcon
-                name="check-circle"
-                className="inline-block mr-2 text-blue-500"
-              /> */}
-                Built SeeAI, leveraging Flask, image recognition AI, and
-                Cloudinary for seamless user experiences.
-              </li>
-            </ul>
+          <p className="text-lg leading-7">
+            Hello World! 👋 <span className="font-semibold">SteveNene</span>{" "}
+            here! An Engineer who is always frustrated by almost everything in
+            the world. 🤔 Trying to solve the world's problems that seem either
+            too obvious to be noticed or too big to tackle. 🌍
+          </p>
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-2">What Drives Me? 🚀</h2>
+              <p>
+                Tech intrigues me due to its endless boundaries and the constant
+                learning journey. 💡 Connecting the nuts and bolts, building
+                things from scratch motivates me to keep pushing forward despite
+                the challenges.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold mb-2">Outside Tech 🌳</h2>
+              <p>
+                I'm not always behind my screen developing complex solutions. I
+                enjoy reconnecting with nature 🏃‍♂️ and meeting new people 🤝.
+                Life is about balance! 🎭
+              </p>
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold mb-2">Parting Shot 🎯</h2>
+              <p className="mb-3">
+                The tech journey hasn't been easy, but it's rewarding. Those
+                sleepless nights debugging semicolons and CORS errors... 😅
+              </p>
+              <p>
+                A wise man once said, you can only connect the dots looking back
+                ⏳. Still hopeful that the future holds a lot, and everything
+                happening now will make sense someday. ✨
+              </p>
+            </div>
           </div>
-
-          {/* Image Section */}
-          <motion.div
-            className="md:w-1/2"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
-            <img src={about2} alt="About Me" className="rounded-lg shadow-lg" />
-          </motion.div>
         </motion.div>
-      </div>
-    </>
+
+        {/* Image Section */}
+        <motion.div
+          className="md:w-1/2 mt-8 md:mt-0"
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.05 }}
+        >
+          <img
+            src={about2}
+            alt="About Me"
+            className="rounded-lg shadow-lg object-cover w-full h-auto max-w-md mx-auto"
+          />
+        </motion.div>
+      </motion.div>
+    </div>
   );
 }

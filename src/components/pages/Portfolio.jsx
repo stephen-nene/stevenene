@@ -52,21 +52,21 @@ export default function Portfolio() {
           <Projects />
         </div>
       </Element>
-      <Element name="Blogs">
+      {/* <Element name="Blogs">
         <div className="bg-blue-500 dark:bg-blue-900">
           <Blogs />
         </div>
-      </Element>
+      </Element> */}
       <Element name="Contact">
         <div className="bg-indigo-500 dark:bg-indigo-900">
           <Contact />
         </div>
       </Element>
-      <Element name="More">
+      {/* <Element name="More">
         <div className="bg-violet-500 dark:bg-violet-900">
           <More />
         </div>
-      </Element>
+      </Element> */}
 
       {/* Floating Button for Scroll to Top */}
       {isScrolled && (

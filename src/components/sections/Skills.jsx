@@ -10,9 +10,8 @@ const SkillCarousel = () => {
   const [isHovering, setIsHovering] = useState(false);
   const controls = useAnimation();
 
-  const getRotationRadius = (totalItems) => {
-    return Math.max(250, Math.min(totalItems * 35, 350));
-  };
+  const getRotationRadius = (totalItems) =>
+    Math.max(250, Math.min(totalItems * 35, 350));
 
   // Flatten all skills into a single list with category & subcategory
   const skillList = [];
@@ -35,39 +34,19 @@ const SkillCarousel = () => {
     rotate: {
       rotate: 360,
       transition: {
-        duration: 40,
+        duration: isHovering ? 80 : 40, // Slows when hovered
         ease: "linear",
         repeat: Infinity,
       },
     },
   };
 
-  const cardVariants = {
-    hover: {
-      scale: 1.2,
-      zIndex: 10,
-      boxShadow: "0 0 20px rgba(16, 185, 129, 0.6)",
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-      },
-    },
-    tap: {
-      scale: 0.95,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 17,
-      },
-    },
-  };
-
   return (
     <div className="min-h-screen text-gray-800 dark:text-gray-200 p-8 overflow-hidden">
-      <h1 className="text-4xl font-bold mb-16 text-center">Skills</h1>
+      <h1 className="text-4xl font-bold mb- text-center">Skills</h1>
 
-      <div className="relative h-[600px]">
+      {/* Circular Rotation */}
+      <div className="relative mt-40 h-[600px]">
         <motion.div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           variants={containerVariants}
@@ -87,16 +66,13 @@ const SkillCarousel = () => {
                 style={{
                   x: x - 60,
                   y: y - 60,
-                  rotate: -angle,
+                  rotate: 80,
                 }}
-                whileHover="hover"
-                whileTap="tap"
-                variants={cardVariants}
+                whileHover={{ scale: 1.15, zIndex: 10 }}
               >
                 <Tooltip
                   title={`${skill.category} → ${skill.subcategory}`}
                   placement="top"
-                  className="block"
                 >
                   <motion.div
                     onClick={() => {
@@ -113,7 +89,7 @@ const SkillCarousel = () => {
                       className="w-32 h-32 flex flex-col items-center justify-center text-center 
                                bg-gradient-to-br from-emerald-300 to-emerald-400 
                                dark:from-emerald-700 dark:to-emerald-900 
-                               shadow-lg rounded-lg transform transition-all duration-300
+                               shadow-lg rounded-lg transition-all duration-300 
                                group-hover:shadow-emerald-500/50 dark:group-hover:shadow-emerald-400/30"
                     >
                       <motion.p
@@ -139,11 +115,17 @@ const SkillCarousel = () => {
         </motion.div>
       </div>
 
+      {/* Animated Modal */}
       <Modal
         title={
-          <div className="flex items-center space-x-2">
-            <span className="text-xl font-bold">{selectedSkill}</span>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-xl font-bold"
+          >
+            {selectedSkill}
+          </motion.div>
         }
         open={isModalOpen}
         onCancel={() => setIsModalOpen(false)}

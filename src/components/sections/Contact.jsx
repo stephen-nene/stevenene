@@ -1,132 +1,144 @@
 import React, { useState } from "react";
-import { FaUser, FaEnvelope, FaPhone } from "react-icons/fa"; // React Icons
-import { MessageCircle } from "lucide-react"; // Lucide Icons
-import { Button, Input,Form } from "antd"; // Antd Components for better styling
+import { FaUser, FaEnvelope, FaPhone, FaGithub } from "react-icons/fa";
+import { MessageCircle, Terminal, Code2, Braces } from "lucide-react";
+import { Button, Input, Form, Tooltip } from "antd";
 
-export default function Contact() {
-  // State for form fields
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [subject, setSubject] = useState("");
-  const [phone, setPhone] = useState("");
-  const onFinish = (values) => {
-    console.log("User Info 0:", values);
+const DevContact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    subject: "",
+    phone: "",
+  });
+
+  const codeSnippet = `const sendMessage = async (data) => {
+  try {
+    await api.post('/contact', data);
+    return { success: true };
+  } catch (err) {
+    console.error('Error:', err);
+    return { success: false };
+  }
+};`;
+
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault(); 
-    console.log("User Info:", {
-      name,
-      email,
-      message,
-      subject,
-      phone,
-    });
+
+  const onFinish = async (values) => {
+    console.log("// DEBUG: Submitting form data:", values);
+    // TODO: Implement API integration
   };
 
   return (
-    <div className="min-h-screen py-12 flex justify-center items-center">
+    <div className="min-h-screen py-12 flex justify-center items-center bg-gra y-50 dark:bg -gray-900 transition-colors duration-300">
       <div className="w-full max-w-7xl px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Section: Contact Form */}
-        <div className="bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800">
-            Contact Me
-          </h2>
+        <div className="bg-emerald-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-all duration-300">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-mono font-semibold text-gray-800 dark:text-gray-200">
+              <Terminal className="inline mr-2" size={24} />
+              Contact.jsx
+            </h2>
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500" />
+              <div className="w-3 h-3 rounded-full bg-green-500" />
+            </div>
+          </div>
 
-          <Form
-            // onFinish={onFinish}
-             onSubmit={handleSubmit}
-            className="space-y-6"
-          >
-            {/* Name */}
-            <div className="flex items-center border-b-2 border-gray-300 py-2">
-              <FaUser className="text-xl text-gray-500 mr-4" />
+          <Form onFinish={onFinish} className="space-y-6">
+            <div className="flex items-center border-2 border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
+              <FaUser className="text-xl text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
               <Input
-                placeholder="Your Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full focus:outline-none border-none"
+                placeholder="const userName = ''"
+                value={formData.name}
+                onChange={(e) => handleInputChange("name", e.target.value)}
+                className="w-full bg-transparent border-none focus:outline-none dark:text-gray-200 ml-4"
               />
             </div>
 
-            {/* Email */}
-            <div className="flex items-center border-b-2 border-gray-300 py-2">
-              <FaEnvelope className="text-xl text-gray-500 mr-4" />
+            <div className="flex items-center border-2 border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
+              <FaEnvelope className="text-xl text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
               <Input
                 type="email"
-                placeholder="Your Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full focus:outline-none border-none"
+                placeholder="email@domain.tsx"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                className="w-full bg-transparent border-none focus:outline-none dark:text-gray-200 ml-4"
               />
             </div>
 
-            {/* Subject */}
-            <div className="flex items-center border-b-2 border-gray-300 py-2">
-              <MessageCircle className="text-xl text-gray-500 mr-4" />
+            <div className="flex items-center border-2 border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
+              <Code2 className="text-xl text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
               <Input
-                placeholder="Subject"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                className="w-full focus:outline-none border-none"
+                placeholder="subject.js"
+                value={formData.subject}
+                onChange={(e) => handleInputChange("subject", e.target.value)}
+                className="w-full bg-transparent border-none focus:outline-none dark:text-gray-200 ml-4"
               />
             </div>
 
-            {/* Message */}
-            <div className="flex items-center border-b-2 border-gray-300 py-2">
+            <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
               <textarea
-                placeholder="Your Message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="w-full p-2 focus:outline-none border-none rounded-lg h-32"
+                placeholder="/** Your message here */"
+                value={formData.message}
+                onChange={(e) => handleInputChange("message", e.target.value)}
+                className="w-full bg-transparent focus:outline-none dark:text-gray-200 font-mono h-32 resize-none"
               />
             </div>
 
-            {/* Phone */}
-            <div className="flex items-center border-b-2 border-gray-300 py-2">
-              <FaPhone className="text-xl text-gray-500 mr-4" />
+            <div className="flex items-center border-2 border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
+              <FaPhone className="text-xl text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
               <Input
                 type="tel"
-                placeholder="Phone (Optional)"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="w-full focus:outline-none border-none"
+                placeholder="// Optional: +1234567890"
+                value={formData.phone}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
+                className="w-full bg-transparent border-none focus:outline-none dark:text-gray-200 ml-4"
               />
             </div>
 
-            {/* Submit Button */}
-            <div className="text-center mt-6">
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="w-full py-3 text-white bg-[#007bff] rounded-lg hover:bg-transparent hover:text-[#007bff] border-2 border-[#007bff] transition-all ease-in-out duration-300"
-              >
-                Submit
-              </Button>
-            </div>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="w-full h-12 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 border-none text-white font-mono transition-all duration-300"
+              icon={<Braces className="inline mr-2" size={16} />}
+            >
+              await submitForm()
+            </Button>
           </Form>
         </div>
 
-        {/* Right Section: Instructions and Other Info */}
+        {/* Right Section: Developer Info */}
         <div className="lg:flex hidden flex-col gap-8">
-          <div className="bg-gray-200 p-6 rounded-lg">
-            <h3 className="text-xl font-semibold">Form Instructions</h3>
-            <p className="text-gray-700">
-              Fill in your contact details and I'll get back to you as soon as
-              possible!
-            </p>
+          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-mono font-semibold dark:text-gray-200 flex items-center gap-2">
+              <Terminal size={20} />
+              README.md
+            </h3>
+            <div className="mt-4 font-mono text-sm text-gray-700 dark:text-gray-300">
+              <p className="mb-2">// How to reach me:</p>
+              <p className="mb-2">1. Fill out the contact form</p>
+              <p className="mb-2">2. Add relevant project details</p>
+              <p className="mb-2">3. Include your GitHub if applicable</p>
+            </div>
           </div>
 
-          <div className="bg-gray-200 p-6 rounded-lg">
-            <h3 className="text-xl font-semibold">Other Info</h3>
-            <p className="text-gray-700">
-              Want to know more about me? Check out my portfolio or drop me a
-              message with your query.
-            </p>
+          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-mono font-semibold dark:text-gray-200 flex items-center gap-2">
+              <FaGithub />
+              contact.js
+            </h3>
+            <pre className="mt-4 p-4 bg-gray-900 text-gray-200 rounded-lg text-sm overflow-x-auto">
+              {codeSnippet}
+            </pre>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default DevContact;

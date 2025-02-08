@@ -48,9 +48,9 @@ export default function Navbar({ darkMode, setdarkMode }) {
     { name: "Me", to: "AboutMe", icon: <User /> },
     { name: "Skills", to: "Skills", icon: <Settings /> },
     { name: "Projects", to: "Projects", icon: <Briefcase /> },
-    { name: "Blogs", to: "Blogs", icon: <FileText /> },
+    // { name: "Blogs", to: "Blogs", icon: <FileText /> },
     { name: "Contact", to: "Contact", icon: <Phone /> },
-    { name: "More", to: "More", icon: <MoreHorizontal /> },
+    // { name: "More", to: "More", icon: <MoreHorizontal /> },
   ];
   const socials = [
     {

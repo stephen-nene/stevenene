@@ -100,9 +100,9 @@ export default function Navbar({ darkMode, setdarkMode }) {
           {navItems.map((section) => (
             <li key={section.to} className="flex cursor-pointer relative">
               <ScrollLink
-                // onClick={() =>
-                //   message.info(`Adding ${section.name} section soon`, 4)
-                // }
+                onClick={() =>
+                  message.info(`Adding ${section.name} section soon`, 4)
+                }
                 to={section.to}
                 smooth={true}
                 duration={500}

@@ -8,7 +8,7 @@ export default function AboutMe() {
   return (
     <div className=" ">
       <motion.div
-        className="min-h-screen flex flex-col p-4 md: p-8 pt-16 md:pt-20  md:flex-row items-center gap-8 md:gap-12"
+        className="min-h-screen flex flex-col md: p-8 pt-16 md:pt-20  md:flex-row items-center gap-8 md:gap-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -67,7 +67,7 @@ export default function AboutMe() {
 
         {/* Image Section */}
         <motion.div
-          className="md:w-1/2 mt-8 md:mt-0"
+          className="hidden md:block md:w-1/2 mt-8 md:mt-0"
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}

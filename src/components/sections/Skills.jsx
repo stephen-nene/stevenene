@@ -1,154 +1,144 @@
-import React, { useState, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { Card, Tooltip, Modal } from "antd";
-import skills from "../../assets/data/skills.json";
+import React, { useState } from "react";
 
-const SkillCarousel = () => {
-  const [selectedSkill, setSelectedSkill] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
-  const controls = useAnimation();
+const SkillsDisplay = () => {
+  const [expandedCategory, setExpandedCategory] = useState(null);
 
-  const getRotationRadius = (totalItems) =>
-    Math.max(250, Math.min(totalItems * 35, 350));
-
-  // Flatten all skills into a single list with category & subcategory
-  const skillList = [];
-  Object.entries(skills.skills).forEach(([category, details]) => {
-    Object.entries(details).forEach(([subcategory, items]) => {
-      items.forEach((item) => {
-        skillList.push({ name: item, category, subcategory });
-      });
-    });
-  });
-
-  const totalItems = skillList.length;
-  const radius = getRotationRadius(totalItems);
-
-  useEffect(() => {
-    controls.start("rotate");
-  }, [controls]);
-
-  const containerVariants = {
-    rotate: {
-      rotate: 360,
-      transition: {
-        duration: isHovering ? 80 : 40, // Slows when hovered
-        ease: "linear",
-        repeat: Infinity,
+  const skillsData = {
+    skills: {
+      Frontend: {
+        Technologies: [
+          "React",
+          "HTML",
+          "CSS",
+          "Tailwind CSS",
+          "JavaScript",
+          "Responsive Design",
+          "Accessibility (A11y)",
+          "Component-Based Architecture",
+          "React Router",
+          "Redux",
+          "Axios",
+        ],
+      },
+      Backend: {
+        Technologies: [
+          "Node.js",
+          "Flask",
+          "Django",
+          "Ruby on Rails",
+          "REST API Design",
+          "MVC Architecture",
+          "Authentication & Authorization",
+          "Express",
+          "Gunicorn",
+          "Webpack",
+          "AWS S3",
+          "Heroku",
+          "Netlify",
+        ],
+      },
+      Databases: {
+        SQL: ["PostgreSQL", "SQLite", "MongoDB", "IndexDB"],
+      },
+      Tools: {
+        "Version Control": [
+          "Git",
+          "GitHub",
+          "GitFlow",
+          "VS Code",
+          "Codium",
+          "Vim",
+          "pnpm",
+          "npm",
+          "yarn",
+          "Trello",
+          "Postman",
+          "DataDog",
+          "Google Analytics",
+        ],
+      },
+      "Other Skills": {
+        DevOps: [
+          "Docker",
+          "CI/CD Pipelines",
+          "Jest",
+          "Enzyme",
+          "Agile Methodologies",
+          "Task Prioritization",
+          "Image Recognition",
+          "Text Extraction",
+          "Remote Collaboration",
+          "Client Communication",
+          "Problem-Solving",
+        ],
       },
     },
   };
 
+  const categoryColors = {
+    Frontend: "bg-blue-500",
+    Backend: "bg-green-500",
+    Databases: "bg-yellow-500",
+    Tools: "bg-purple-500",
+    "Other Skills": "bg-red-500",
+  };
+
+  const toggleCategory = (category) => {
+    if (expandedCategory === category) {
+      setExpandedCategory(null);
+    } else {
+      setExpandedCategory(category);
+    }
+  };
+
   return (
-    <div className="min-h-screen text-gray-800 dark:text-gray-200 p-8 overflow-hidden">
-      <h1 className="text-4xl font-bold mb- text-center">Skills</h1>
+    <div className="p-6 max-w-4xl mx-auto bg-gray-50 rounded-xl shadow-md">
+      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+        Professional Skills
+      </h1>
 
-      {/* Circular Rotation */}
-      <div className="relative mt-40 h-[600px]">
-        <motion.div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-          variants={containerVariants}
-          animate={controls}
-          onHoverStart={() => setIsHovering(true)}
-          onHoverEnd={() => setIsHovering(false)}
-        >
-          {skillList.map((skill, index) => {
-            const angle = (index * 360) / totalItems;
-            const x = radius * Math.cos((angle * Math.PI) / 180);
-            const y = radius * Math.sin((angle * Math.PI) / 180);
-
-            return (
-              <motion.div
-                key={skill.name}
-                className="absolute cursor-pointer"
-                style={{
-                  x: x - 60,
-                  y: y - 60,
-                  rotate: 80,
-                }}
-                whileHover={{ scale: 1.15, zIndex: 10 }}
-              >
-                <Tooltip
-                  title={`${skill.category} → ${skill.subcategory}`}
-                  placement="top"
-                >
-                  <motion.div
-                    onClick={() => {
-                      setSelectedSkill(skill.name);
-                      setSelectedCategory(
-                        `${skill.category} → ${skill.subcategory}`
-                      );
-                      setIsModalOpen(true);
-                    }}
-                    className="relative group"
-                  >
-                    <Card
-                      hoverable
-                      className="w-32 h-32 flex flex-col items-center justify-center text-center 
-                               bg-gradient-to-br from-emerald-300 to-emerald-400 
-                               dark:from-emerald-700 dark:to-emerald-900 
-                               shadow-lg rounded-lg transition-all duration-300 
-                               group-hover:shadow-emerald-500/50 dark:group-hover:shadow-emerald-400/30"
-                    >
-                      <motion.p
-                        className="text-sm font-semibold"
-                        animate={{
-                          scale: isHovering ? 1.1 : 1,
-                          transition: { duration: 0.2 },
-                        }}
-                      >
-                        {skill.name}
-                      </motion.p>
-                      <motion.div
-                        className="absolute inset-0 bg-emerald-500/10 rounded-lg"
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                      />
-                    </Card>
-                  </motion.div>
-                </Tooltip>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
-
-      {/* Animated Modal */}
-      <Modal
-        title={
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-xl font-bold"
+      <div className="grid gap-6">
+        {Object.entries(skillsData.skills).map(([category, subCategories]) => (
+          <div
+            key={category}
+            className="bg-white rounded-lg shadow-md overflow-hidden"
           >
-            {selectedSkill}
-          </motion.div>
-        }
-        open={isModalOpen}
-        onCancel={() => setIsModalOpen(false)}
-        footer={null}
-        className="skill-modal"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
-            {selectedCategory}
-          </p>
-          <div className="p-4 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg">
-            <p className="text-sm">
-              More details about {selectedSkill} can go here.
-            </p>
+            <div
+              className={`flex justify-between items-center p-4 cursor-pointer ${categoryColors[category]} text-white`}
+              onClick={() => toggleCategory(category)}
+            >
+              <h2 className="text-xl font-semibold">{category}</h2>
+              <span className="text-2xl">
+                {expandedCategory === category ? "−" : "+"}
+              </span>
+            </div>
+
+            {expandedCategory === category && (
+              <div className="p-4">
+                {Object.entries(subCategories).map(([subCategory, skills]) => (
+                  <div key={subCategory} className="mb-4">
+                    <h3 className="text-lg font-medium text-gray-700 mb-2">
+                      {subCategory}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        </motion.div>
-      </Modal>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default SkillCarousel;
+export default SkillsDisplay;

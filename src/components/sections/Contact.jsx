@@ -4,41 +4,43 @@ import { MessageCircle, Terminal, Code2, Braces } from "lucide-react";
 import { Button, Input, Form, Tooltip } from "antd";
 
 const DevContact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-    subject: "",
-    phone: "",
-  });
+  const [form] = Form.useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const codeSnippet = `const sendMessage = async (data) => {
   try {
-    await api.post('/contact', data);
-    return { success: true };
+    const response = await axios.post('/contact', data);
+    return { success: true, data: response.data };
   } catch (err) {
-    console.error('Error:', err);
-    return { success: false };
+    console.error('Transmission Error:', err);
+    return { success: false, error: err };
   }
 };`;
 
-  const handleInputChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-
   const onFinish = async (values) => {
-    console.log("// DEBUG: Submitting form data:", values);
-    // TODO: Implement API integration
+    setIsSubmitting(true);
+    try {
+      // Simulated API call
+      console.log("Submitting form data:", values);
+      // TODO: Replace with actual API integration
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      form.resetFields();
+      // Add success notification
+    } catch (error) {
+      // Add error handling
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="min-h-screen py-12 flex justify-center items-center bg-gra y-50 dark:bg -gray-900 transition-colors duration-300">
+    <div className="min-h-screen py-12 flex justify-center items-center  transition-colors duration-300">
       <div className="w-full max-w-7xl px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Section: Contact Form */}
-        <div className="bg-emerald-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-all duration-300">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-mono font-semibold text-gray-800 dark:text-gray-200">
-              <Terminal className="inline mr-2" size={24} />
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-mono font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
+              <Terminal className="inline" size={24} />
               Contact.jsx
             </h2>
             <div className="flex gap-2">
@@ -48,72 +50,95 @@ const DevContact = () => {
             </div>
           </div>
 
-          <Form onFinish={onFinish} className="space-y-6">
-            <div className="flex items-center border-2 border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
-              <FaUser className="text-xl text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
+          <Form
+            form={form}
+            onFinish={onFinish}
+            layout="vertical"
+            className="space-y-6 max-w-2xl mx-auto"
+          >
+            <Form.Item
+              name="name"
+              rules={[{ required: true, message: "Name is required" }]}
+            >
               <Input
+                prefix={<FaUser className="text-gray-500 dark:text-gray-100" />}
                 placeholder="const userName = ''"
-                value={formData.name}
-                onChange={(e) => handleInputChange("name", e.target.value)}
-                className="w-full bg-transparent border-none focus:outline-none dark:text-gray-200 ml-4"
+                className="py-2 px-4 dark:bg-gray-700 focus:bg-gray-800 dark:text-gray-100"
               />
-            </div>
+            </Form.Item>
 
-            <div className="flex items-center border-2 border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
-              <FaEnvelope className="text-xl text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
+            <Form.Item
+              name="email"
+              rules={[
+                { required: true, message: "Email is required" },
+                { type: "email", message: "Invalid email format" },
+              ]}
+            >
               <Input
+                prefix={
+                  <FaEnvelope className="text-gray-500 dark:text-gray-400" />
+                }
                 type="email"
                 placeholder="email@domain.tsx"
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-                className="w-full bg-transparent border-none focus:outline-none dark:text-gray-200 ml-4"
+                className="py-2 px-4 dark:bg-gray-700 dark:text-gray-200"
               />
-            </div>
+            </Form.Item>
 
-            <div className="flex items-center border-2 border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
-              <Code2 className="text-xl text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
+            <Form.Item name="subject">
               <Input
+                prefix={<Code2 className="text-gray-500 dark:text-gray-400" />}
                 placeholder="subject.js"
-                value={formData.subject}
-                onChange={(e) => handleInputChange("subject", e.target.value)}
-                className="w-full bg-transparent border-none focus:outline-none dark:text-gray-200 ml-4"
+                className="py-2 px-4 dark:bg-gray-700 dark:text-gray-200"
               />
-            </div>
+            </Form.Item>
 
-            <div className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
-              <textarea
+            <Form.Item
+              name="message"
+              rules={[{ required: true, message: "Message is required" }]}
+            >
+              <Input.TextArea
                 placeholder="/** Your message here */"
-                value={formData.message}
-                onChange={(e) => handleInputChange("message", e.target.value)}
-                className="w-full bg-transparent focus:outline-none dark:text-gray-200 font-mono h-32 resize-none"
+                rows={5}
+                className="py-2 px-4 dark:bg-gray-700 dark:text-gray-200 font-mono"
               />
-            </div>
+            </Form.Item>
 
-            <div className="flex items-center border-2 border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4 group hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200">
-              <FaPhone className="text-xl text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
+
+            <Form.Item
+              rules={[
+                {
+                  pattern: /^(\+\d{1,3}\s?)?((07\d{8})|(\d{9}))$/,
+                  message:
+                    "Please enter a valid phone number. Example:  +1234567890 or 07XXXXXXXX",
+                },
+              ]}
+              name="phone"
+            >
               <Input
+                prefix={
+                  <FaPhone className="text-gray-500 dark:text-gray-400" />
+                }
                 type="tel"
-                placeholder="// Optional: +1234567890"
-                value={formData.phone}
-                onChange={(e) => handleInputChange("phone", e.target.value)}
-                className="w-full bg-transparent border-none focus:outline-none dark:text-gray-200 ml-4"
+                placeholder="// Optional: +1234567890 or 07XXXXXXXX"
+                className="py-2 px-4 dark:bg-gray-700 dark:text-gray-200"
               />
-            </div>
+            </Form.Item>
 
             <Button
               type="primary"
               htmlType="submit"
+              loading={isSubmitting}
               className="w-full h-12 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 border-none text-white font-mono transition-all duration-300"
               icon={<Braces className="inline mr-2" size={16} />}
             >
-              await submitForm()
+              {isSubmitting ? "Sending..." : "await submitForm()"}
             </Button>
           </Form>
         </div>
 
         {/* Right Section: Developer Info */}
         <div className="lg:flex hidden flex-col gap-8">
-          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
             <h3 className="text-xl font-mono font-semibold dark:text-gray-200 flex items-center gap-2">
               <Terminal size={20} />
               README.md
@@ -126,7 +151,7 @@ const DevContact = () => {
             </div>
           </div>
 
-          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
             <h3 className="text-xl font-mono font-semibold dark:text-gray-200 flex items-center gap-2">
               <FaGithub />
               contact.js

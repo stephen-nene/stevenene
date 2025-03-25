@@ -1,4 +1,10 @@
-import { Cpu,Wrench, DatabaseZap, ExternalLink, Mail } from "lucide-react";
+import {
+  HardDriveDownload,
+  Wrench,
+  DatabaseZap,
+  ExternalLink,
+  Mail,
+} from "lucide-react";
 import {
   Globe,
   Lock,
@@ -11,6 +17,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
+import {Link} from 'react-router-dom'
 
 
 import img from "../../assets/images/1.webp";
@@ -104,6 +111,15 @@ export default function Hero() {
                 <Mail size={20} />
                 Contact Me
               </ScrollLink>
+              <a
+                href="https://www.canva.com/design/DAGH5pkyxw8/Q7AjesuLkQMe3k2D1jdDaw/view?utm_content=DAGH5pkyxw8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6f23046e7a"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer px-6 py-3 border-2 border-gray-800 dark:border-white text-gray-800 dark:text-white rounded-lg font-medium flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+              >
+                <HardDriveDownload size={20} />
+                CV
+              </a>
             </div>
           </motion.div>
 

@@ -30,7 +30,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {/* Sections */}
       <Element name="Heros">
         <div className="bg-rose-600 dark:bg-rose-950">
